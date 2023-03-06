@@ -103,8 +103,6 @@ export default function Sidebar() {
     }
   };
 
-  console.log(rooms);
-
   return (
     <div className="p-8 overflow-y-scroll">
       <Flex className="text-lg text-slate-200">Latest Conversations</Flex>

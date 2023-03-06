@@ -58,6 +58,7 @@ export default function Chat() {
 
   useEffect(() => {
     dummyDivRef.current.scrollIntoView({ behavior: "smooth" });
+    setUploadFile(null);
   }, [messages]);
 
   const handleSubmit = async (e) => {
