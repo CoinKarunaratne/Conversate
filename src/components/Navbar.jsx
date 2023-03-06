@@ -19,6 +19,7 @@ import { setLogout } from "../state";
 
 export default function Navbar() {
   const user = useSelector((state) => state.user);
+  const conversations = useSelector((state) => state.conversations);
   const toast = useToast();
   const createToast = () => {
     toast({
@@ -43,7 +44,7 @@ export default function Navbar() {
         <Avatar src={user.photoURL}>
           <AvatarBadge width="1.3em" bg="teal.500">
             <Text fontSize="xs" color="white">
-              7
+              {conversations}
             </Text>
           </AvatarBadge>
         </Avatar>

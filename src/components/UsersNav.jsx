@@ -1,22 +1,10 @@
-import { UnlockIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Button,
-  Spacer,
-  HStack,
-  useToast,
-  Avatar,
-  AvatarBadge,
-} from "@chakra-ui/react";
-import { auth } from "../config/firebase";
+import { Flex, Text, HStack, Avatar } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { db } from "../config/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import { setConversation } from "../state";
 
 export default function UsersNav() {
   const dispatch = useDispatch();
@@ -54,13 +42,15 @@ export default function UsersNav() {
       const roomExistsSnapshot = await getDocs(roomExistsQuery);
       const filteredData = roomExistsSnapshot.docs.map((doc) => ({
         ...doc.data(),
+        id: doc.id,
       }));
       const filteredRoom = filteredData.filter((room) =>
         room.users.includes(currentUser.uid)
       );
 
       if (filteredRoom.length >= 1) {
-        console.log(filteredRoom[0].messages);
+        await dispatch(setConversation({ room: filteredRoom[0] }));
+        navigate("/home/chat");
       } else {
         await addDoc(roomRef, {
           users: [userID, currentUser.uid],
@@ -74,8 +64,13 @@ export default function UsersNav() {
   };
 
   return (
-    <Flex as="nav" p="10px" alignItems="center" className="m-5">
-      <HStack spacing="20px">
+    <Flex
+      as="nav"
+      p="10px"
+      alignItems="center"
+      className="bg-gradient-to-r from-[#0172AF] to-[#74FEBD]"
+    >
+      <HStack spacing="20px" className="p-1 overflow-x-scroll">
         {users.map((user) => {
           return (
             <Flex
@@ -85,14 +80,10 @@ export default function UsersNav() {
                 setRoom(user.uid);
               }}
             >
-              <Avatar src={user.photoURL} alignSelf="center">
-                <AvatarBadge width="1.3em" bg="teal.500">
-                  <Text fontSize="xs" color="white">
-                    7
-                  </Text>
-                </AvatarBadge>
-              </Avatar>
-              <Text textAlign="center">{user.displayName}</Text>
+              <Avatar src={user.photoURL} alignSelf="center"></Avatar>
+              <Text textAlign="center" color="white" className="font-semibold">
+                {user.displayName}
+              </Text>
             </Flex>
           );
         })}

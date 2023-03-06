@@ -7,9 +7,10 @@ const initialState = {
     photoURL: null,
   },
   room: {
+    id: null,
     users: [],
-    messages: [],
   },
+  conversations: null,
 };
 
 export const authSlice = createSlice({
@@ -26,8 +27,12 @@ export const authSlice = createSlice({
     setConversation: (state, action) => {
       state.room = action.payload.room;
     },
+    setNumber: (state, action) => {
+      state.conversations = action.payload.conversations;
+    },
   },
 });
 
-export const { setLogout, setUser, setConversation } = authSlice.actions;
+export const { setLogout, setUser, setConversation, setNumber } =
+  authSlice.actions;
 export default authSlice.reducer;
