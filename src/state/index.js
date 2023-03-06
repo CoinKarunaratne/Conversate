@@ -11,6 +11,10 @@ const initialState = {
     users: [],
   },
   conversations: null,
+  currentAvatar: {
+    displayName: null,
+    photoUrl: null,
+  },
 };
 
 export const authSlice = createSlice({
@@ -30,9 +34,17 @@ export const authSlice = createSlice({
     setNumber: (state, action) => {
       state.conversations = action.payload.conversations;
     },
+    setCurrentAvatar: (state, action) => {
+      state.currentAvatar = action.payload;
+    },
   },
 });
 
-export const { setLogout, setUser, setConversation, setNumber } =
-  authSlice.actions;
+export const {
+  setLogout,
+  setUser,
+  setConversation,
+  setNumber,
+  setCurrentAvatar,
+} = authSlice.actions;
 export default authSlice.reducer;

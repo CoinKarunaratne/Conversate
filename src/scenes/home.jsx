@@ -1,10 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
-import { auth } from "../config/firebase";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import UsersNav from "../components/UsersNav";
 import { Grid, GridItem } from "@chakra-ui/react";
-import Chat from "../components/Chat";
 import Sidebar from "../components/Sidebar";
 
 export default function home() {

@@ -12,6 +12,7 @@ import Register from "./scenes/register";
 import "./App.css";
 import Chat from "./components/Chat";
 import Index from "./components/Index";
+import Mobile from "./components/Mobile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
         <Route index element={<Index />} />
         <Route path="chat" element={<Chat />} />
       </Route>
+      <Route path="/chat/mobile" element={<Mobile />} />
     </Route>
   )
 );

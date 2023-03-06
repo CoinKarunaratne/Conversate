@@ -11,7 +11,16 @@ import {
 } from "firebase/firestore";
 import { db, storage } from "../config/firebase";
 import { useState, useEffect, useRef } from "react";
-import { Card, CardBody, Flex, Box, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  Flex,
+  Box,
+  Image,
+  HStack,
+  Avatar,
+  Spacer,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { Icon } from "react-icons-kit";
@@ -20,6 +29,7 @@ import { image } from "react-icons-kit/fa/image";
 export default function Chat() {
   const room = useSelector((state) => state.room);
   const user = useSelector((state) => state.user);
+  const currentUser = useSelector((state) => state.currentAvatar);
 
   const [messages, setMessages] = useState([]);
   const [newMsg, setNewMsg] = useState("");
@@ -102,9 +112,17 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col relative h-full">
-      <Flex></Flex>
-      <div className="overflow-y-scroll h-[80vh] p-[20px] lg:p-[40px]">
+    <div className="flex flex-col relative h-[100vh]">
+      <Flex className="p-4 bg-gradient-to-r from-green-700 to-lime-500">
+        <HStack>
+          <Avatar src={currentUser?.photoUrl}></Avatar>
+          <Spacer />
+          <h1 className="font-semibold self-middle text-white">
+            {currentUser?.displayName}
+          </h1>
+        </HStack>
+      </Flex>
+      <div className="overflow-y-scroll p-[20px] lg:p-[40px]">
         {messages[0]?.map((msg, index) =>
           msg.type === "image" ? (
             <Flex

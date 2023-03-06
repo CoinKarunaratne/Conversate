@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../state";
 import { useNavigate } from "react-router-dom";
 import { db } from "../config/firebase";
@@ -20,6 +20,13 @@ export default function register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userRef = collection(db, "users");
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate("/home");
+    }
+  }, []);
 
   const registerSchema = yup.object().shape({
     Name: yup.string().required("Required"),
