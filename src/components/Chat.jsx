@@ -169,7 +169,7 @@ export default function Chat() {
             type="submit"
             className="self-center h-[80%] w-[10%] border-white border-2 rounded-xl text-base lg:text-lg font-bold text-white"
           >
-            Send
+            Sen
           </motion.button>
           <motion.label
             whileTap={{ scale: 0.8 }}
