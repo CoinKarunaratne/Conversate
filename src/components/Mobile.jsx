@@ -136,7 +136,7 @@ export default function Chat() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
-                <Box boxSize="sm" className="flex mb-5">
+                <Box boxSize="xs" className="flex mb-5">
                   <Image
                     src={msg.text}
                     alt="Chat-Image"
@@ -158,7 +158,7 @@ export default function Chat() {
                 transition={{ duration: 0.2 }}
               >
                 <Card
-                  size={{ sm: "sm", lg: "md" }}
+                  size="md"
                   backgroundColor="orange.100"
                   className="w-[200px] lg:w-[300px] text-sm lg:text-base mb-5"
                 >
@@ -170,7 +170,7 @@ export default function Chat() {
         )}
         <div className="h-[70px]" ref={dummyDivRef}></div>
       </div>
-      <div className="absolute bottom-0 w-full h-[80px] bg-gradient-to-r from-[#0172AF] to-[#74FEBD]">
+      <div className="absolute bottom-0 w-full h-[60px] bg-gradient-to-r from-[#0172AF] to-[#74FEBD]">
         <form
           onSubmit={handleSubmit}
           className="w-full flex flex-row h-full gap-4 px-5"
@@ -181,14 +181,6 @@ export default function Chat() {
             onChange={(e) => setNewMsg(e.target.value)}
             className="rounded-xl w-[85%] h-[80%] self-center px-5 outline-none"
           />
-          <motion.button
-            whileTap={{ scale: 0.8 }}
-            whileHover={{ scale: 0.95 }}
-            type="submit"
-            className="self-center h-[80%] w-[15%] border-white border-2 rounded-xl text-base md:text-lg font-bold text-white"
-          >
-            Send
-          </motion.button>
           <motion.label
             whileTap={{ scale: 0.8 }}
             whileHover={{ scale: 0.95 }}

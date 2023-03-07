@@ -104,7 +104,6 @@ export default function Chat() {
 
   return (
     <div className="flex flex-col relative h-full">
-      <Flex></Flex>
       <div className="overflow-y-scroll h-[80vh] p-[20px] lg:p-[40px]">
         {messages[0]?.map((msg, index) =>
           msg.type === "image" ? (
@@ -153,7 +152,7 @@ export default function Chat() {
         )}
         <div className="h-[70px]" ref={dummyDivRef}></div>
       </div>
-      <div className="absolute bottom-0 w-full h-[80px] bg-gradient-to-r from-[#0172AF] to-[#74FEBD]">
+      <div className="absolute bottom-0 w-full h-[60px] bg-gradient-to-r from-[#0172AF] to-[#74FEBD]">
         <form
           onSubmit={handleSubmit}
           className="w-full flex flex-row h-full gap-4 px-5"
@@ -168,7 +167,7 @@ export default function Chat() {
             whileTap={{ scale: 0.8 }}
             whileHover={{ scale: 0.95 }}
             type="submit"
-            className="self-center h-[80%] w-[15%] border-white border-2 rounded-xl text-base md:text-lg font-bold text-white"
+            className="self-center h-[80%] w-[10%] border-white border-2 rounded-xl text-base lg:text-lg font-bold text-white"
           >
             Send
           </motion.button>
@@ -176,7 +175,7 @@ export default function Chat() {
             whileTap={{ scale: 0.8 }}
             whileHover={{ scale: 0.95 }}
             htmlFor="file"
-            className="h-[80%] w-[15%] border-white text-slate-500 border-2 rounded-xl self-center flex justify-center"
+            className="h-[80%] w-[10%] border-white text-slate-500 border-2 rounded-xl self-center flex justify-center"
           >
             <input
               id="file"

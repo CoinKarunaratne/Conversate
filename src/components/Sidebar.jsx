@@ -104,7 +104,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="p-8 overflow-y-scroll">
+    <div className="p-8 overflow-y-scroll max-h-full">
       <Flex className="text-lg text-slate-200">Latest Conversations</Flex>
       <Divider className="mb-10" />
       {rooms?.map((room, index) => (

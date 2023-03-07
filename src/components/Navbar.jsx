@@ -41,14 +41,14 @@ export default function Navbar() {
       <Heading as="h1">Conversate</Heading>
       <Spacer />
       <HStack spacing="20px">
-        <Avatar src={user.photoURL}>
+        <Avatar src={user?.photoURL}>
           <AvatarBadge width="1.3em" bg="teal.500">
             <Text fontSize="xs" color="white">
               {conversations}
             </Text>
           </AvatarBadge>
         </Avatar>
-        <Text className="hidden sm:inline-block">{user.displayName}</Text>
+        <Text className="hidden sm:inline-block">{user?.displayName}</Text>
         <Button
           colorScheme="green"
           onClick={() => {
