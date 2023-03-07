@@ -5,6 +5,7 @@ import { db } from "../config/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { setConversation } from "../state";
+import { isMobile } from "react-device-detect";
 
 export default function UsersNav() {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ export default function UsersNav() {
               className="flex flex-col w-[100px] gap-2 cursor-pointer self-baseline"
               onClick={() => {
                 setRoom(user.uid);
+                isMobile && navigate("/chat/mobile");
               }}
             >
               <Avatar src={user.photoURL} alignSelf="center"></Avatar>
