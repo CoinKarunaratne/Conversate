@@ -29,7 +29,7 @@ export default function home() {
         >
           <GridItem
             as="aside"
-            className="col-span-6 sm:col-span-2 bg-sky-900 h-[100vh] md:h-[80vh]"
+            className="col-span-6 sm:col-span-2 bg-sky-900 h-[130vh] md:h-[80vh]"
           >
             <Sidebar />
           </GridItem>
